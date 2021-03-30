@@ -7,16 +7,13 @@
 import UIKit
 
 class JsonViewCellTableViewCell: UITableViewCell {
+    @IBOutlet var labelOne: UILabel!
+    @IBOutlet var labelTwo: UILabel!
+    @IBOutlet var labelThree: UILabel!
+    @IBOutlet var labelFour: UILabel!
 
-    @IBOutlet weak var labelOne: UILabel!
-    @IBOutlet weak var labelTwo: UILabel!
-    @IBOutlet weak var labelThree: UILabel!
-    @IBOutlet weak var labelFour: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-
 }
