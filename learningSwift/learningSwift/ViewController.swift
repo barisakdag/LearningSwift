@@ -7,74 +7,34 @@
 import Foundation
 import UIKit
 
-struct JsonPlaceHolder: Decodable {
-    let userId: Int
-    let id: Int
-    let title: String
-    let body: String
-}
-
 class ViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
-    var listOfJsonPosts = [JsonPlaceHolder]()
+    var viewModel: MyViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        self.viewModel = MyViewModel(apiService: ApiServiceJSON())
+        //TestAPI
+        //self.viewModel = MyViewModel(apiService: TestApiService(testData: [MyModel(userId: 1, id: 1, title: "", body: "")]))
+
         tableView.delegate = self
         tableView.dataSource = self
-        
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else {
-            return
-        }
-        
-        let session = URLSession.shared
-        
-        let datatask = session.dataTask(with: url) {
-            data, _, error in
-            // Check for errors
-            if error == nil, data != nil {
-                // Parse the data
-                let decoder = JSONDecoder()
-                do {
-                    let jsonObject = try decoder.decode([JsonPlaceHolder].self,
-                                                        from: data!)
-                    
-                    // Adding the data to a list
-                    self.listOfJsonPosts.append(contentsOf: jsonObject)
-                    
-                    // ReloadData
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    
-                    // For each item in the list, if the ID is  below or equal to 50 - Print it out
-                    for item in self.listOfJsonPosts {
-                        if item.id <= 50 {
-                            // print(item)
-                            print(item.userId)
-                            print(item.id)
-                            print(item.title)
-                            print(item.body)
-                        }
-                    }
-                    
-                } catch {
-                    print("Error in json parsing")
-                }
+        self.viewModel.onDataChanged = { [weak self] in
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
-        
-        datatask.resume()
+        self.viewModel.callFuncToGetjsonData()
     }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     // Filtering the list of jsonplaceholder where id is less or equal to 50
-    var displayableCells: [JsonPlaceHolder] {
-        return self.listOfJsonPosts.filter { $0.id <= 50 }
+    var displayableCells: [MyModel] {
+        return self.viewModel.jsonData.filter { $0.id <= 50 }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -91,10 +51,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? JsonViewCellTableViewCell
-        // guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? JsonViewCellTableViewCell else{
-        //    return UITableViewCell()
-        // }
-        
+
         let list = self.displayableCells[indexPath.row]
         
         cell!.labelOne.text = "Id: " + String(list.id)

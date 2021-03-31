@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D104F1002613D4A70033A6A9 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104F0FF2613D4A70033A6A9 /* MyModel.swift */; };
+		D104F1062613D5010033A6A9 /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104F1052613D5010033A6A9 /* MyViewModel.swift */; };
+		D104F10C26146EF30033A6A9 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D104F10B26146EF30033A6A9 /* APIService.swift */; };
 		D13B7ED825F80C7A00297DEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B7ED725F80C7A00297DEB /* AppDelegate.swift */; };
 		D13B7EDA25F80C7A00297DEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B7ED925F80C7A00297DEB /* SceneDelegate.swift */; };
 		D13B7EDC25F80C7A00297DEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13B7EDB25F80C7A00297DEB /* ViewController.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D104F0FF2613D4A70033A6A9 /* MyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
+		D104F1052613D5010033A6A9 /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
+		D104F10B26146EF30033A6A9 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		D13B7ED425F80C7A00297DEB /* learningSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learningSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13B7ED725F80C7A00297DEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D13B7ED925F80C7A00297DEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,9 +84,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D104F0FE2613D48E0033A6A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D104F0FF2613D4A70033A6A9 /* MyModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D104F1042613D4D80033A6A9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D104F1052613D5010033A6A9 /* MyViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D104F10A26146EE00033A6A9 /* API Service */ = {
+			isa = PBXGroup;
+			children = (
+				D104F10B26146EF30033A6A9 /* APIService.swift */,
+			);
+			path = "API Service";
+			sourceTree = "<group>";
+		};
 		D13B7ECB25F80C7A00297DEB = {
 			isa = PBXGroup;
 			children = (
+				D104F10A26146EE00033A6A9 /* API Service */,
+				D104F1042613D4D80033A6A9 /* ViewModels */,
+				D104F0FE2613D48E0033A6A9 /* Models */,
 				D13B7ED625F80C7A00297DEB /* learningSwift */,
 				D13B7EED25F80C7B00297DEB /* learningSwiftTests */,
 				D13B7EF825F80C7B00297DEB /* learningSwiftUITests */,
@@ -261,7 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D104F1062613D5010033A6A9 /* MyViewModel.swift in Sources */,
+				D104F10C26146EF30033A6A9 /* APIService.swift in Sources */,
 				D13B7EDC25F80C7A00297DEB /* ViewController.swift in Sources */,
+				D104F1002613D4A70033A6A9 /* MyModel.swift in Sources */,
 				D13B7ED825F80C7A00297DEB /* AppDelegate.swift in Sources */,
 				D190AB9925F975E60061CE12 /* JsonViewCellTableViewCell.swift in Sources */,
 				D13B7EDA25F80C7A00297DEB /* SceneDelegate.swift in Sources */,
@@ -441,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 379UR4DXDN;
 				INFOPLIST_FILE = learningSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +496,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 379UR4DXDN;
 				INFOPLIST_FILE = learningSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
